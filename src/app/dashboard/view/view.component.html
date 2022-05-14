@@ -1,0 +1,83 @@
+<div fxLayout="row">
+    <div fxFlex="83">
+        <div fxLayout="row" class="" style="margin-top: 150px;" >
+          <div fxFlex="60" fxFlexOffset="20">
+            <div class="wk-card">
+              <div class="wk-card-header py-1">Search Criteria</div>
+            </div>
+            <div class="border p-2">
+              <div fxLayout="row">
+                <div fxFlex="22" class="text-right"><label for="" class="f-13 bold mr-1">Search Type :</label></div>
+                <div fxFlex="28">
+                  <select class=" form-control form-control-sm f-12 px-1">
+                    <option></option>
+                  </select>
+                </div>
+                <div fxFlex="40" fxFlexOffset="5"><input type="text" class=" form-control form-control-sm f-12 px-1" placeholder="Enter Customer"></div>
+              </div>
+              <div fxLayout="row" class="mt-4">
+                <div fxFlex="30" fxFlexOffset="35">
+                  <button class="wk-button px-3 py-1">Search</button>
+                  <button class="wk-button px-3 py-1 ml-4">Clear</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <!-- <div fxLayout="row" class="" style="margin-top: 150px;">
+            <div fxFlex="80" fxFlexOffset="10">
+              <div class="wk-card">
+                <div class="wk-card-header py-1">Search Criteria</div>
+              </div>
+              <div class="border p-2">
+                <div fxLayout="row">
+                  <div fxFlex="13" class="text-right"><label for="" class="f-13 bold mr-1">Search Type :</label></div>
+                  <div fxFlex="20">
+                    <select class=" form-control form-control-sm f-12 px-1">
+                      <option  *ngFor="let x of dropDown">{{x.searchTypes}}</option>
+                    </select>
+                  </div>
+                  <div fxFlex="13" class="text-right"><label for="" class="f-13 bold mr-1">Search Type :</label></div>
+                  <div fxFlex="20">
+                    <select class=" form-control form-control-sm f-12 px-1">
+                      <option  *ngFor="let x of dropDown">{{x.searchTypes}}</option>
+                    </select>
+                  </div>
+                  <div fxFlex="30" fxFlexOffset="3"><input type="text" class=" form-control form-control-sm f-12 px-1"></div>
+                </div>
+                <div fxLayout="row" class="mt-4">
+                  <div fxFlex="30" fxFlexOffset="35">
+                    <button class="wk-button px-3 py-1">Search</button>
+                    <button class="wk-button px-3 py-1 ml-4">Clear</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wk-table mt-3 customer-table">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Route Name</th>
+                    <th>Customer Name</th>
+                    <th>Mobile No</th>
+                    <th>Door No.</th>
+                    <th>Land Mark</th>
+                    <th>Location</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 <tr *ngFor="let x of customersList">
+                   <td>{{x.routeName}}</td>
+                   <td>{{x.customerName}}</td>
+                   <td>{{x.mobile}}</td>
+                   <td>{{x.door}}</td>
+                   <td>{{x.landMark}}</td>
+                   <td><a href="{{x.location}}">Current location</a></td>
+                 </tr>
+                </tbody>
+              </table>
+          </div>        
+      </div> -->
+</div>

@@ -1,0 +1,111 @@
+<div fxLayout="row" class="mt-5">
+    <div fxFlex="70" fxFlexOffset="15">
+        <div fxLayout="row" class="wk-add-new">
+            <div fxFlex="100">Add New Customer</div>
+        </div>
+        <div class="border border-top-0">
+            <div class=" row mt-3">
+                <div class=" col-md-6 offset-md-3 bg-gray px-4 py-2 f-13 bold">
+                  <div class="row p-2 bg-white"></div>
+                  <div class="row bg-white p-1">
+                    <div class="  col-md-5 offset-md-1  ">
+                      <label for="" class="mb-0 mt-1" >Route Name</label>
+                      <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                      <select name="route" id="routes_dropdown" class=" form-control text-input" [formControl]="ddlRouteName">
+                        
+                        <option value="1" >Prakash Nagar</option>
+                        <option value="2">Palanadu Road</option> 
+                        <option value="3">More Center</option>                                              
+                      </select>
+                    </div>
+                  </div> 
+                  <div class="row bg-white p-1">
+                    <div class="  col-md-5 offset-md-1  ">
+                      <label for="" class="mb-0 mt-1">Customer Name</label>
+                      <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                      <input type="text" class=" form-control text-input"  [formControl]="customerName">
+                    </div>
+                  </div> 
+                  <div class="row bg-white p-1">
+                    <div class=" col-md-5 offset-md-1 ">
+                      <label for="" class="mb-0 mt-1">Phone/Mobile</label>
+                      <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                      <input type="text" class=" form-control text-input"  [formControl]="contact">
+                    </div>
+                  </div>
+                  <div class="row bg-white p-1">
+                    <div class=" col-md-5 offset-md-1 ">
+                      <label for="" class="mb-0 mt-1">Door No</label>
+                      <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                      <input type="text" class=" form-control text-input"  [formControl]="doorNo">
+                    </div>                        
+                  </div>
+                  <div class="row bg-white p-1">
+                    <div class=" col-md-5 offset-md-1 ">
+                      <label for="" class="mb-0 mt-1">Land Mark</label>
+                      <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                      <input type="text" class=" form-control text-input"  [formControl]="landMark">
+                    </div>
+                  </div>
+                  <div class="row bg-white p-1">
+                    <div class="  col-md-5 offset-md-1 ">
+                      <label for="" class="mb-0 mt-1">Pin Code</label>
+                      <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                      <input type="text" class=" form-control text-input"  [formControl]="pinCode">
+                    </div>
+                  </div>
+                  <div class="row bg-white p-1">
+                    <div class=" col-md-5 offset-md-1 ">
+                      <label for="" class="mb-0 mt-1">City/Villege Name</label>
+                      <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                      <input type="text" class=" form-control text-input"  [formControl]="city">
+                    </div>
+                  </div>
+                  <!-- <div class="row bg-white p-1">
+                    <div class=" col-md-5 offset-md-1 ">
+                      <label for="" class="mb-0 mt-1"></label>
+                      <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                      <input type="text" class=" form-control text-input"  [formControl]="pinCode">
+                    </div>
+                  </div>
+                  <div class="row bg-white p-1">
+                    <div class=" col-md-5 offset-md-1 ">
+                      <label for="" class="mb-0 mt-1">Location</label>
+                      <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                      <input type="text" class=" form-control text-input" [formControl]="location">
+                    </div>
+                  </div>   -->
+                  <div class="row bg-white p-1">
+                    <div class=" col-md-5 offset-md-1 ">
+                      <label for="" class="mb-0 mt-1"></label>
+                      <span class="symbol-span"></span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                      <button class="wk-button px-3 py-1" (click)="AddNew()">AddCustomer</button>
+                    </div>
+                  </div> 
+                  <div class="row p-2 bg-white"></div> 
+                </div>
+              </div>
+        </div>
+        
+    </div>
+</div>

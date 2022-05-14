@@ -1,0 +1,77 @@
+<div class="home">
+  <div class="wk-header">
+     <p class="wk-title p-4">W<span class="ht-small-title">E KNO</span>W</p>
+  </div>
+  <div class="wk-header1"></div>
+</div>
+<div fxLayout="row">
+  <div fxFlex="17">
+    <div class="side-nav">
+      <ul *ngFor="let item of navLinks|keyvalue" class=" wk-nav">
+        <li class="wk-nav-link" (click)="navigate(item.value)">{{item.key}}</li>
+      </ul>
+    </div>
+  </div>
+  <div fxFlex="83">    
+    <div fxLayout="row" class="" style="margin-top: 15px;">
+        <div fxFlex="80" fxFlexOffset="10">
+          <div class="wk-card">
+            <div class="wk-card-header py-1">Search Criteria</div>
+          </div>
+          <div class="border p-2">
+            <div fxLayout="row">
+              <div fxFlex="13" *ngIf="admin" class="text-right"><label for="" class="f-13 bold mr-1" >Route Name :</label></div>
+              <div fxFlex="20"  *ngIf="admin" >
+                <select class=" form-control form-control-sm f-12 px-1">
+                  <option value="0">--Select--</option>
+                  <option  *ngFor="let x of routeNames" [value]="x.id">{{x.name}}</option>
+                </select>
+              </div>
+              <div fxFlex="13" class="text-right"><label for="" class="f-13 bold mr-1">Search Type :</label></div>
+              <div fxFlex="20">
+                <select class=" form-control form-control-sm f-12 px-1" >
+                  <option value="0">--Select--</option>
+                  <option  *ngFor="let x of dropDown">{{x.searchTypes}}</option>
+                </select>
+              </div>
+              <div fxFlex="30" fxFlexOffset="3"><input type="text" class=" form-control form-control-sm f-12 px-1" placeholder="Enter Search" ></div>
+            </div>
+            <div fxLayout="row" class="mt-4">
+              <div fxFlex="30" fxFlexOffset="35">
+                <button class="wk-button px-3 py-1">Search</button>
+                <button class="wk-button px-3 py-1 ml-4">Clear</button>                
+                                
+              </div>
+              <div fxFlex="30">
+                <span class="forgt mb-0 link-text" [routerLink]="['/addnew']">Add new customer</span>  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wk-table mt-3 customer-table">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Route Name</th>
+                <th>Customer Name</th>
+                <th>Mobile No</th>
+                <th>Door No.</th>
+                <th>Land Mark</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+             <tr *ngFor="let x of customersList ; let i=index" id="Details{{i}}">
+               <td>{{x.routeName}}</td>
+               <td>{{x.customerName}}</td>
+               <td>{{x.contact}}</td>
+               <td>{{x.doorNo}}</td>
+               <td>{{x.landMark}}</td>
+               <td class="text-link" (click)="getLocation(x.locationUrl)">Location</td>
+             </tr>
+            </tbody>
+          </table>
+      </div>        
+  </div>
+</div>

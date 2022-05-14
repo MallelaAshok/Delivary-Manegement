@@ -1,0 +1,102 @@
+.side-nav{
+    border: 2px solid rgb(15, 187, 199);
+    padding: 5px;
+    height: 500px;
+    overflow: auto;
+    margin: 5px 0 0 5px;
+}
+$app-color:rgb(15, 187, 199);
+.wk-nav{
+    list-style-type: none;
+    margin-bottom: 0%;
+    padding-left: 0%;
+    .wk-nav-link{
+        color: #fff;
+        background-color: rgb(15, 187, 199);
+        font-size: 16px;
+        font-weight: bold;
+        padding-top: 5px;
+        padding-left: 15px;
+        height: 35px;
+        margin-bottom: 3px;
+        border-radius: 5px;
+    }
+}
+
+.wk-card{
+    background-color: $app-color;
+    .wk-card-header{
+        font-size: 16px;
+        font-weight: bold;
+        padding-left: 15px;
+    }
+}
+.wk-button{
+    background-color: $app-color;
+    font-size: 13px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.wk-table table{
+    th{
+        background-color: $app-color;
+        font-size: 13px;
+        vertical-align: middle;
+        padding: 3px;
+        color: #fff;
+        text-align: center;
+        border: rgb(15, 187, 199);
+        position: sticky;
+        top: -1;
+    }
+}
+.text-link{
+    font-size: 12px;
+    font-weight: bold;
+    color: red;
+}
+.text-link:hover{
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    color: blue;
+}
+
+.customer-table{
+    max-height: 330px;
+    overflow: auto;
+}
+
+$app-color:rgb(15, 187, 199);
+.wk-header{
+    background-color: $app-color;
+    width: 100%;
+    height: 70px;
+    z-index: -2;
+    box-shadow: 0 2px 14px;
+}
+.wk-header1{
+    background-color: $app-color;
+    width: 100%;
+    height: 40px;
+    position: sticky; 
+    z-index: -3;
+}
+.wk-title{
+    font-size: 50px;
+    color: #fff;
+    font-family: algerian;
+}
+.link-text{
+    font-size: 16px;
+    font-weight: bold;
+    color: $app-color;
+    
+    &:hover{
+        cursor: pointer;
+        border-bottom: 2px solid $app-color;
+    }
+}

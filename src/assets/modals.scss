@@ -1,0 +1,10 @@
+$app-color:rgb(15, 187, 199);
+.wk-modal{
+    .modal-md{
+        max-width:70%;
+    }
+    
+    .modal-header{
+        background-color: $app-color;
+    }
+}

@@ -1,0 +1,149 @@
+<div fxLayout="row" class="mt-5">
+    <div fxFlex="70" fxFlexOffset="15">
+        <div fxLayout="row" class="wk-add-new">
+            <div fxFlex="100">User Registration</div>
+        </div>
+        <div class="border border-top-0">
+            <div class=" row mt-3">
+                <div class=" col-md-6 offset-md-3 bg-gray px-4 py-2 f-13 bold">
+                  <div class="row p-2 bg-white"></div>
+                  <div class="row bg-white p-1">
+                    <div class="  col-md-5 offset-md-1  ">
+                      <label for="" class="mb-0 mt-1" >Date of Birth</label>
+                      <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                        <input type="text" class=" form-control form-control-sm f-12 px-1"
+                        placeholder=" Date of Birth" [formControl]="dobfc">
+                    </div>
+                  </div> 
+                  <div class="row bg-white p-1">
+                    <div class="  col-md-5 offset-md-1  ">
+                      <label for="" class="mb-0 mt-1" >First Name</label>
+                      <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                        <input type="text" class=" form-control form-control-sm f-12 px-1"
+                        placeholder=" First Name" [formControl]="fnfc">
+                    </div>
+                  </div> 
+                  <div class="row bg-white p-1">
+                    <div class="  col-md-5 offset-md-1  ">
+                    <label for="" class="mb-0 mt-1">Last Name</label>
+                    <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                    <input type="text" class=" form-control form-control-sm  text-input f-12 px-1" 
+                    placeholder=" Last Name"  [formControl]="lnfc">
+                    </div>
+                </div> 
+                <div class="row bg-white p-1">
+                    <div class=" col-md-5 offset-md-1 ">
+                    <label for="" class="mb-0 mt-1">Email</label>
+                    <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                    <input type="text" class=" form-control form-control-sm  text-inputf-12 px-1" 
+                    placeholder=" Email"  [formControl]="mailfc">
+                    </div>
+                </div>
+                <div class="row bg-white p-1">
+                    <div class=" col-md-5 offset-md-1 ">
+                    <label for="" class="mb-0 mt-1">Phone</label>
+                    <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                    <input type="text" class=" form-control form-control-sm  text-inputf-12 px-1"
+                    placeholder=" Phone Number"  [formControl]="phonefc">
+                    </div>
+                </div>
+          
+                <div class="row bg-white p-1">
+                    <div class="  col-md-5 offset-md-1  ">
+                    <label for="" class="mb-0 mt-1">User Name</label>
+                    <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                    <input type="text" class=" form-control form-control-sm  text-inputf-12 px-1" 
+                    placeholder=" User Name"  [formControl]="usnmfc">
+                    </div>
+                </div> 
+                <div class="row bg-white p-1">
+                    <div class=" col-md-5 offset-md-1 ">
+                    <label for="" class="mb-0 mt-1">Password</label>
+                    <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                    <input type="text" class=" form-control form-control-sm  text-input f-12 px-1"
+                    placeholder=" Password"  [formControl]="pswrdfc" >
+                    </div>
+                </div>
+                <div class="row bg-white p-1">
+                    <div class=" col-md-5 offset-md-1 ">
+                    <label for="" class="mb-0 mt-1">Confirm Password</label>
+                    <span class="symbol-span">:</span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                    <input type="text" class=" form-control form-control-sm  text-input f-12 px-1"
+                    placeholder=" Confirm Password"  [formControl]="cnfrmpswrdfc" >
+                    </div>
+                </div>
+       
+                  <div class="row bg-white p-1">
+                    <div class=" col-md-5 offset-md-1 ">
+                      <label for="" class="mb-0 mt-1"></label>
+                      <span class="symbol-span"></span>
+                    </div>
+                    <div class=" col-md-6 p-0">
+                      <button class="wk-button px-3 py-1" (click)="SaveUser()">{{btnSaveUpdate}}</button>
+                    </div>
+                  </div> 
+                  <div class="row p-2 bg-white"></div> 
+                </div>
+
+                <div class=" col-md-6 offset-md-3 bg-gray px-4 py-2 f-13 bold" *ngIf="">
+                    
+                    <div class="row bg-white p-1">
+                        <div class="  col-md-5 offset-md-1  ">
+                        <label for="" class="mb-0 mt-1">Employee Name</label>
+                        <span class="symbol-span">:</span>
+                        </div>
+                        <div class=" col-md-6 p-0">
+                        <input type="text" class=" form-control text-input"  >
+                        </div>
+                    </div> 
+                    <div class="row bg-white p-1">
+                        <div class=" col-md-5 offset-md-1 ">
+                        <label for="" class="mb-0 mt-1">Phone/Mobile</label>
+                        <span class="symbol-span">:</span>
+                        </div>
+                        <div class=" col-md-6 p-0">
+                        <input type="text" class=" form-control text-input"  >
+                        </div>
+                    </div>
+                    <div class="row bg-white p-1">
+                        <div class=" col-md-5 offset-md-1 ">
+                        <label for="" class="mb-0 mt-1">Address</label>
+                        <span class="symbol-span">:</span>
+                        </div>
+                        <div class=" col-md-6 p-0">
+                        <input type="text" class=" form-control text-input"  >
+                        </div>
+                    </div>
+                    <div class="row bg-white p-1">
+                        <div class=" col-md-5 offset-md-1 ">
+                        <label for="" class="mb-0 mt-1">Documents</label>
+                        <span class="symbol-span">:</span>
+                        </div>
+                        <div class=" col-md-6 p-0">
+                        <input type="file" class=" form-control text-input"  >
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+        
+    </div>
+</div>
+
+
