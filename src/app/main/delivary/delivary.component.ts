@@ -34,7 +34,7 @@ export class DelivaryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-  
+     this.loading=true
     this.toaster.showSuccess('working')
     this.service.userdetails$.subscribe(x=>{      
       if(x!=null){
@@ -66,6 +66,7 @@ export class DelivaryComponent implements OnInit {
     this.get()
     this.GetSideNavTabs()
     this.GetRoutes()
+    this.loading=false
   }
   getLocation(link:any){
    // window.open(` https://maps.google.com/maps?q=${lat}%2C${lng}&z=20&hl=en`)
@@ -105,7 +106,10 @@ export class DelivaryComponent implements OnInit {
 
 
 get(){
+  this.customersList=[]
+  this.loading=true
  this.service.getdetails(this.logindata.route).subscribe(x=>{
+   this.loading=false
  this.customersList=Object.values(x)
     })
   }
@@ -146,14 +150,16 @@ only(value:any):any{
 
 
   GetRoutes(){
+    this.loading=true
      this.service.getRoutes().subscribe(x=>{
       this.routeNames=x
+      this.loading=false
     })
       }
 
 
   changecontent(event){
-    if(this.slctext.value=="CN"){this.placeholder="Please Enter a customer Name"}
+    if(this.slctext.value=="CN"){this.placeholder="Enter  customer Name"}
     else if(this.slctext.value=="MB"){this.placeholder="Mobile Number"}
     else if(this.slctext.value=="DN"){this.placeholder="Enter Door No."}
     else if(this.slctext.value=="LM"){this.placeholder="Enter Land Mark"}
