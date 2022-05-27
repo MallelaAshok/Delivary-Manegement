@@ -29,12 +29,12 @@
               </div>
               <div fxFlex="13" class="text-right"><label for="" class="f-13 bold mr-1">Search Type :</label></div>
               <div fxFlex="20">
-                <select class=" form-control form-control-sm f-12 px-1" >
+                <select class=" form-control form-control-sm f-12 px-1" [formControl]="slctext">
                   <option value="0">--Select--</option>
-                  <option  *ngFor="let x of dropDown">{{x.searchTypes}}</option>
+                  <option  *ngFor="let x of dropDown" [value]="x.value">{{x.searchTypes}}</option>
                 </select>
               </div>
-              <div fxFlex="30" fxFlexOffset="3"><input type="text" class=" form-control form-control-sm f-12 px-1" placeholder="Enter Search" ></div>
+              <div fxFlex="30" fxFlexOffset="3"><input type="text"  class=" form-control form-control-sm f-12 px-1" placeholder="Enter Search" ></div>
             </div>
             <div fxLayout="row" class="mt-4">
               <div fxFlex="30" fxFlexOffset="35">

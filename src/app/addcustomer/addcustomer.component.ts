@@ -19,6 +19,7 @@ export class AddcustomerComponent implements OnInit {
   pinCode=new FormControl('')
   city=new FormControl('')
   ddlRouteName=new FormControl('')
+  location= new FormControl('')
   constructor(private service:ProjectService,private router:Router) { 
     
   }

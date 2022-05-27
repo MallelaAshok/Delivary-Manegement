@@ -1,18 +1,18 @@
-<div class="home">
+<!-- <div class="home">
     <div class="wk-header">
        <p class="wk-title p-4">W<span class="ht-small-title">E KNO</span>W</p>
     </div>
     <div class="wk-header1"></div>
-  </div>
+  </div> -->
   <div fxLayout="row">
-    <div fxFlex="17">
+    <!-- <div fxFlex="17">
       <div class="side-nav">
         <ul *ngFor="let item of navbtns1|keyvalue" class=" wk-nav">
           <li class="wk-nav-link" (click)="navigate(item.value)">{{item.key}}</li>
         </ul>
       </div>
-    </div>
-    <div fxFlex="83">        
+    </div> -->
+    <div fxFlex="80">        
     <div fxLayout="row" class="" style="margin-top: 15px;">
       <div fxFlex="80" fxFlexOffset="10">
         <div class="wk-card">
@@ -63,15 +63,15 @@
               </thead>
               <tbody>
                <tr *ngFor="let x of employeeList ; let i=index" id="Details{{i}}">
-                 <td>{{x.employeeId}}</td>
-                 <td>{{x.employeeName}}</td>
-                 <td>{{x.contact}}</td>
-                 <td>{{x.address}}</td>
-                 <td class="text-link" (click)="getLocation(x.docs)">Docs</td>  
+                 <td>{{x?.employeeId}}</td>
+                 <td>{{x?.employeeName}}</td>
+                 <td>{{x?.contact}}</td>
+                 <td>{{x?.address}}</td>
+                 <td class="text-link" (click)="getLocation(x?.docs)">Docs</td>  
                  <td>
-                   <select > 
+                   <select [formControl]="x?.rout"> 
                                                            
-                    <option *ngFor="let route of routes"[value]="route?.id">{{route?.name}}</option>
+                    <option *ngFor="let route of routes" [value]="route?.id">{{route?.name}}</option>
                    </select>
                  </td>  
                  <td><button class="btn btn-primary">Assign</button></td>           
