@@ -1,45 +1,58 @@
+
+
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from 'src/app/project.service';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+
 declare const $:any
+
 @Component({
-  selector: 'app-employee',
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss']
+  selector: 'app-sidenav-main',
+  templateUrl: './sidenav-main.component.html',
+  styleUrls: ['./sidenav-main.component.scss']
 })
-export class EmployeeComponent implements OnInit {
- userdata:any
-  navbtns: any = [];
-  dropDown: any = [];
+export class SidenavMainComponent implements OnInit {
+ timelimit:any
+  currentdate=new Date()
   logindata:any;
-  navbtns1: any ;
+  navbtns: any = [];
+  navLinks: any ;
+  dropDown: any = [];
+  routeNames:any
   admin: any;
   role:any;
-  employeeList: any[]= [];
-  routes:any=[];
-  routeName =new FormControl('--Select--') 
+  customersList: any = [];
+  route: any;
   constructor(
     private service: ProjectService,
     private token: AuthenticationService,
     private router:Router,
+    
   ) {}
 
   ngOnInit(): void {
-    this.service.userdetails$.subscribe(x=>{
+    this.service.userdetails$.subscribe(x=>{      
       if(x!=null){
-        this.logindata=x
-        if(this.logindata.role=="admin"){  
-          this.admin=true
-         }
-         else{
-           this.admin=false
-         }
+        this.logindata=x       
+        if(this.validLogin()){
+          if(this.logindata.role=="admin"){
+            this.admin=true
+            this.route=this.logindata.route
+           }
+           else{
+             this.admin=false
+           }
+        }
+        else{
+          alert("Session is Expired please Login Again.")
+          this.router.navigate([''])
+        }
+       
       }
       else{
-        alert("Session Expaired please login again")
-        this.router.navigate(['home'])
+        this.router.navigate([''])
       }
      
 
@@ -48,13 +61,14 @@ export class EmployeeComponent implements OnInit {
     this.dropDown = this.service.dropdown
   
     this.get()
-    this.getRoutes()
-    // this.GetSideNavTabs()
+    this.GetSideNavTabs()
+    this.GetRoutes()
   }
   getLocation(link:any){
    // window.open(` https://maps.google.com/maps?q=${lat}%2C${lng}&z=20&hl=en`)
    window.open(link);
   }
+
   slctext= new FormControl('CN')
   searchtext = new FormControl('')
   selchan(key:any){
@@ -63,14 +77,14 @@ export class EmployeeComponent implements OnInit {
   }
   clear(){
     this.searchtext.setValue('') 
-    this.employeeList.forEach((x:any,d:number) => {
+    this.customersList.forEach((x:any,d:number) => {
     $(`#Details${d}`).css({'background':"none"})
     });
 
   }
   search(value:any){
     if(this.slctext.value=="CN"){
-    this.employeeList.forEach((x:any,d:number) => {
+    this.customersList.forEach((x:any,d:number) => {
     if(x.customer_name==this.searchtext.value){
     
       $(`#Details${d}`).css({'background':"#256363"})
@@ -83,15 +97,10 @@ export class EmployeeComponent implements OnInit {
 
   }
 get(){
-     this.employeeList=[]
-this.service.getEmployes().subscribe(x=>{
-  let array
-  array =  Object.values(x);
-  array.forEach((element:any) => {
-    element.rout=new FormControl('N')
-    this.employeeList.push(element)
-  });
- 
+     
+this.service.getdetails(this.logindata?.route).subscribe(x=>{
+  
+this.customersList=Object.values(x)
 })
   }
 only(value:any):any{
@@ -102,20 +111,30 @@ only(value:any):any{
       { return false}}
   }
   navigate(page:any){
-    this.router.navigate([page])
+    this.router.navigate([`nav/${page}`])
+    this.service.userdata(this.logindata) 
   }
-  getRoutes(){
+  validLogin(){
+    this.timelimit=this.currentdate.getMinutes()-this.logindata.loginTime.getMinutes()
+    if(this.timelimit>1){
+       return true
+    }
+    else{
+      return true
+    }
+   
+  }
+  GetSideNavTabs(){
+    this.service.GetSideNavTabs(this.logindata.role).subscribe(x=>{  
+      this.navLinks=x
+    })
+  }
+  GetRoutes(){
      
     this.service.getRoutes().subscribe(x=>{
       
-    this.routes=Object.values(x)
-    const body = Object.assign({name:'--Select--',id:'N'})
-    this.routes.unshift(body)
+    this.routeNames=x
     })
       }
-      GetSideNavTabs(){
-        this.service.GetSideNavTabs(this.logindata.role).subscribe(x=>{  
-          this.navbtns1=x
-        })
-      }    
-}
+    }
+

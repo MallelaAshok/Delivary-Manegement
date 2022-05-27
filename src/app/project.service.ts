@@ -26,11 +26,11 @@ public data :BehaviorSubject<any>=new BehaviorSubject<any>(null)
 
   addnewCustomer(body:any):Observable<any>{
     const url=`${this.dburl}/customer/${body.routeId}.json`
-    return this.http.post(url,body)
+    return this.http.put(url,body)
   }
   addNewEmployee(body:any):Observable<any>{
     const url=`${this.dburl}/employee.json`
-    return this.http.post(url,body)
+    return this.http.put(url,body)
   }
   GetRoutes():Observable<any>{
     const url = `${this.dburl}/routes.json`
@@ -50,7 +50,7 @@ public data :BehaviorSubject<any>=new BehaviorSubject<any>(null)
  
       save(body:any):Observable<any>{
         const url=`${this.dburl}/detailsBD.json`
-        return this.http.post(url,body)
+        return this.http.put(url,body)
       }
       getdetails(route:any):Observable<any>{
         
@@ -78,8 +78,7 @@ public data :BehaviorSubject<any>=new BehaviorSubject<any>(null)
       }
       savelog(body:any){
         const url = `${this.dburl}/logdetails/${body.name}/${body.password}.json`
-        return this.http.post(url,body)
-
+        return this.http.put(url,body)
       }
     userdetails$=this.data.asObservable()
       userdata(body:any){

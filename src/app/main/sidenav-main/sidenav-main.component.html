@@ -1,0 +1,11 @@
+
+  <div fxLayout="row">
+    <div>
+      <div class="side-nav">
+        <ul *ngFor="let item of navLinks|keyvalue" class=" wk-nav">
+          <li class="wk-nav-link" (click)="navigate(item.value)">{{item.key}}</li>
+        </ul>
+      </div>
+    </div>
+  
+  </div>
