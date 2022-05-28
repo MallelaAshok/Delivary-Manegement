@@ -66,11 +66,16 @@ export class NewuserComponent implements OnInit {
     obj.lastname = this.lnfc.value;
     obj.mail = this.mailfc.value;
     obj.phone = this.phonefc.value;
-    obj.username = this.usnmfc.value;
-    obj.password = this.pswrdfc.value;
-    obj.cnfrmpasswrd = this.cnfrmpswrdfc.value;
-    this.service.SaveUser(obj).subscribe(x=>{
-      console.log(x);
+    //obj.username = this.usnmfc.value;
+    //obj.password = this.pswrdfc.value;
+    obj.routes={};
+    obj.role="admin";
+    //obj.cnfrmpasswrd = this.cnfrmpswrdfc.value;
+    this.service.SaveDeliveryBoy(obj).subscribe(x=>{
+      if(x!=null){
+        this.service.SaveUpdateUser(x,this.usnmfc.value,this.pswrdfc.value).subscribe()
+      }
+
     })
   }
   

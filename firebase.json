@@ -3,7 +3,7 @@
     "rules": "weKnow.Rules.json"
   },
   "hosting": {
-    "public": "y",
+    "public": "project",
     "ignore": [
       "firebase.json",
       "**/.*",

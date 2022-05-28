@@ -7,8 +7,8 @@
             </div>
             <div class="border p-2">
               <div fxLayout="row">
-                <div fxFlex="13" *ngIf="admin" class="text-right"><label for="" class="f-13 bold mr-1" >Route Name :</label></div>
-                <div fxFlex="20"  *ngIf="admin" >
+                <div fxFlex="13" class="text-right"><label for="" class="f-13 bold mr-1" >Route Name :</label></div>
+                <div fxFlex="20" >
                   <select class=" form-control form-control-sm f-12 px-1">
                     <option value="0">--Select--</option>
                     <option  *ngFor="let x of routeNames" [value]="x.id">{{x.name}}</option>
@@ -49,13 +49,13 @@
                 </tr>
               </thead>
               <tbody>
-               <tr *ngFor="let x of customersList ; let i=index" id="Details{{i}}">
-                 <td>{{x.routeName}}</td>
-                 <td>{{x.customerName}}</td>
-                 <td>{{x.contact}}</td>
-                 <td>{{x.doorNo}}</td>
-                 <td>{{x.landMark}}</td>
-                 <td class="text-link" (click)="getLocation(x.locationUrl)">Location</td>
+               <tr *ngFor="let x of customersList|keyvalue"  id="Details{{x.key}}">
+                 <td>{{x?.value?.routeName}}</td>
+                 <td>{{x?.value?.customerName}}</td>
+                 <td>{{x?.value?.contact}}</td>
+                 <td>{{x?.value?.doorNo}}</td>
+                 <td>{{x?.value?.landMark}}</td>
+                 <td class="text-link" (click)="getLocation(x?.value?.locationUrl)">Location</td>
                </tr>
               </tbody>
             </table>

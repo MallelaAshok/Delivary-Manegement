@@ -3,6 +3,7 @@ import { ProjectService } from 'src/app/project.service';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import {ToastService} from "src/app/shared/services/toastr/toastr.service"
 declare const $:any
 @Component({
   selector: 'app-employee',
@@ -24,31 +25,33 @@ export class EmployeeComponent implements OnInit {
     private service: ProjectService,
     private token: AuthenticationService,
     private router:Router,
+    public toster:ToastService
   ) {}
 
   ngOnInit(): void {
-    this.service.userdetails$.subscribe(x=>{
-      if(x!=null){
-        this.logindata=x
-        if(this.logindata.role=="admin"){  
-          this.admin=true
+    const userId =JSON.parse(localStorage.getItem('userId'))
+    if(userId){
+      this.service.getUserDetails(userId.name).subscribe(x=>{
+     if(x!=null){
+         this.logindata=x       
+         if(this.logindata.role=="admin")
+         {
+          this.get()
+          this.getRoutes()          
          }
-         else{
-           this.admin=false
-         }
-      }
-      else{
-        alert("Session Expaired please login again")
-        this.router.navigate(['home'])
-      }
-     
-
-    })
+            else{
+              this.toster.showWarning("UnAuthrised User .")
+             this.router.navigate([''])}
+        }
+       else{
+         this.router.navigate([''])
+       }
+      })
+    }
     this.navbtns = this.service.sidenav
     this.dropDown = this.service.dropdown
   
-    this.get()
-    this.getRoutes()
+    
     // this.GetSideNavTabs()
   }
   getLocation(link:any){
@@ -84,13 +87,8 @@ export class EmployeeComponent implements OnInit {
   }
 get(){
      this.employeeList=[]
-this.service.getEmployes().subscribe(x=>{
-  let array
-  array =  Object.values(x);
-  array.forEach((element:any) => {
-    element.rout=new FormControl('N')
-    this.employeeList.push(element)
-  });
+this.service.getallusers().subscribe(x=>{
+  this.employeeList = x;
  
 })
   }
