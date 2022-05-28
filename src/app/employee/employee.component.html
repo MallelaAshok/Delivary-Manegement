@@ -51,25 +51,24 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th>Employee ID</th>
                   <th>Employee Name</th>
-                  <th>Mobile No</th>
+                  <th>Employee Mobile</th>
+                  <th>Employee Email</th>
                   <th>Address</th>
-                  <th>Documents</th>
-                  
+                  <th>Documents</th>                  
                   <th>Select Route</th>  
                   <th>Assign Route</th>                
                 </tr>
               </thead>
               <tbody>
-               <tr *ngFor="let x of employeeList ; let i=index" id="Details{{i}}">
-                 <td>{{x?.employeeId}}</td>
-                 <td>{{x?.employeeName}}</td>
-                 <td>{{x?.contact}}</td>
-                 <td>{{x?.address}}</td>
-                 <td class="text-link" (click)="getLocation(x?.docs)">Docs</td>  
+               <tr *ngFor="let item of employeeList|keyvalue"  id="Details{{item.key}}">
+                 <td>{{item?.value?.lastname+"."+item?.value?.firstname}}</td>
+                 <td>{{item?.value?.phone}}</td>
+                 <td>{{item?.value?.mail}}</td>
+                 <td>{{item?.value?.address}}</td>
+                 <td class="text-link" (click)="getLocation(item?.value?.docs)">Docs</td>  
                  <td>
-                   <select [formControl]="x?.rout"> 
+                   <select> 
                                                            
                     <option *ngFor="let route of routes" [value]="route?.id">{{route?.name}}</option>
                    </select>

@@ -73,7 +73,7 @@ public data :BehaviorSubject<any>=new BehaviorSubject<any>(null)
       }
       logindetailsbyName(name:any,password:any){
 
-        const url = `${this.dburl}/logdetails/${name}/${password}.json`
+        const url = `${this.dburl}/users/${name}/${password}.json`
         return this.http.get(url)
       }
       savelog(body:any){
@@ -85,15 +85,71 @@ public data :BehaviorSubject<any>=new BehaviorSubject<any>(null)
         this.data.next(body)
       }
 
-    SaveUser(body:any){
-      const url = `${this.dburl}/logdetails/${body.username}/${body.password}.json`
-      return this.http.put(url,body)
-    }
+
+
+   
+
     getRoutes(){
       const url=`${this.dburl}/Routes/.json`
       return this.http.get(url)
     }
-      
+////**************** */ delivery boys.component
+getallusers():Observable<any>{
+  const url = `${this.dburl}/users.json`
+  return this.http.get(url)
 }
+SaveDeliveryBoy(body:any):Observable<any>{
+  const url = `${this.dburl}/users.json`
+  return this.http.post(url,body)
+}
+getUserDetails(Id:any):Observable<any>{
+  const url = `${this.dburl}/users/${Id}.json`
+  return this.http.get(url)
+}
+updatedelivaryboydetails(body:any,Id):Observable<any>{
+  const url = `${this.dburl}/users/${Id}.json`
+  return this.http.put(url,body)
+}
+Deletedelivaryboy(Id:any):Observable<any>{
+  const url = `${this.dburl}/users/${Id}.json`
+  return this.http.delete(url)
+}
+
+
+//==========end=================
+ 
+
+//*********user login details */********************** */
+SaveUpdateUser(id:any,userName:any,password:any){
+  const url = `${this.dburl}/userAuth/${userName}/${password}.json`
+  return this.http.put(url,id)
+}
+DeleteUser(userName:any){
+  const url = `${this.dburl}/userAuth/${userName}.json`
+  return this.http.delete(url)
+}
+getuserdetails(userName:any,password:any){
+  const url = `${this.dburl}/userAuth/${userName}/${password}.json`
+  return this.http.get(url)
+}
+
+//========END=====================
+
+//********************DYNAMIC TABS*******************/
+getDynamicTabs(role:any){
+  var url:string="";
+  if(role=="admin"){    
+     url = `${this.dburl}/dynamicTabs/adminTabs.json`    
+  }
+  else{
+    url = `${this.dburl}/dynamicTabs/userTabs.json`
+  }
+  return this.http.get(url) 
+}
+
+}
+
+
+
 
 

@@ -20,10 +20,9 @@ export class DelivaryComponent implements OnInit {
   navLinks: any ;
   dropDown: any = [];
   routeNames:any
-  admin: any;
   role:any;
   placeholder:string
-  customersList: any = [];
+  customersList: any[]= [];
   route: any;
   constructor(
     private service: ProjectService,
@@ -34,38 +33,32 @@ export class DelivaryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-  
-    this.toaster.showSuccess('working')
-    this.service.userdetails$.subscribe(x=>{      
-      if(x!=null){
+  const userId =JSON.parse(localStorage.getItem('userId'))
+   if(userId){
+     this.service.getUserDetails(userId.name).subscribe(x=>{
+    if(x!=null){
         this.logindata=x       
-        if(this.validLogin()){
-          if(this.logindata.role=="admin"){
-            this.admin=true
-            this.route=this.logindata.route
-           }
+        if(this.logindata.role=="admin"){
+         
+          this.GetRoutes()
+        }else if(this.logindata.role=="user")
+        {
+
+        }
            else{
-             this.admin=false
-           }
-        }
-        else{
-          alert("Session is Expired please Login Again.")
-          this.router.navigate([''])
-        }
-       
-      }
+            this.router.navigate([''])}
+       }
       else{
         this.router.navigate([''])
       }
-     
-
-    })
+     })
+   }
     this.navbtns = this.service.sidenav
     this.dropDown = this.service.dropdown
+    this.get();
+    
   
-    this.get()
-    this.GetSideNavTabs()
-    this.GetRoutes()
+    
   }
   getLocation(link:any){
    // window.open(` https://maps.google.com/maps?q=${lat}%2C${lng}&z=20&hl=en`)
@@ -105,8 +98,8 @@ export class DelivaryComponent implements OnInit {
 
 
 get(){
- this.service.getdetails(this.logindata.route).subscribe(x=>{
- this.customersList=Object.values(x)
+ this.service.getdetails("all").subscribe(x=>{
+ this.customersList=x
     })
   }
 
@@ -153,7 +146,7 @@ only(value:any):any{
 
 
   changecontent(event){
-    if(this.slctext.value=="CN"){this.placeholder="Please Enter a customer Name"}
+    if(this.slctext.value=="CN"){this.placeholder="Enter customer Name"}
     else if(this.slctext.value=="MB"){this.placeholder="Mobile Number"}
     else if(this.slctext.value=="DN"){this.placeholder="Enter Door No."}
     else if(this.slctext.value=="LM"){this.placeholder="Enter Land Mark"}
